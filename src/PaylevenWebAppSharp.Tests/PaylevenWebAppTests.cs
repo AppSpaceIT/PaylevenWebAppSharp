@@ -17,7 +17,7 @@ namespace PaylevenWebAppSharp.Tests
         private const string DisplayName = "AppName";
         private const string OrderId = "order_123";
         private readonly Uri _callBackUri = new Uri("https://domain.com/checkout/callback");
-        private const string Timestamp = "30/01/2016 11:15:00";
+        private const string Timestamp = "2016-01-30T11:15:30";
 
         private readonly PaylevenWebApp _sut = new PaylevenWebApp(Token);
         private readonly HttpRequestBase _httpRequest = Substitute.For<HttpRequestBase>();
