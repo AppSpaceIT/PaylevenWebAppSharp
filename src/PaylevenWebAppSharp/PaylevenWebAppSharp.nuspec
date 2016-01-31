@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <title>$title$</title>
+    <authors>Alessandro Petrelli</authors>
+    <owners>Alessandro Petrelli</owners>
+    <projectUrl>http://github.com/petrhaus/PaylevenWebAppSharp</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>a port of the Payleven web API to the .NET framework, which allows your mobile enabled website to interact with the Payleven mobile pos.</description>
+    <releaseNotes>First release.</releaseNotes>
+    <copyright>Copyright 2016</copyright>
+    <tags>payleven mobile pos</tags>
+  </metadata>
+</package>
