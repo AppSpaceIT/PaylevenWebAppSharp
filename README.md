@@ -13,6 +13,10 @@ Install the nuget package
 Get a reference to the PaylevenWebApp class. The constructor takes a string parameter, which is the token you have been provided by Payleven, used to sign requests and verify response signatures.
 
 ```csharp
+using PaylevenWebAppSharp;
+using PaylevenWebAppSharp.Enums;
+...
+
 var payleven = new PaylevenWebApp("my_token");
 ```
 
@@ -115,8 +119,23 @@ catch (Exception exc)
 ```
 
 #### Response
-Verify a response sent by Payleven as the result of an operation
+Verify a response sent by Payleven to the callback uri, as the result of an operation.
+You just need to pass a reference to the actual HttpRequest: if the request is not valid or tampered an exception will be thrown, otherwise you'll get back a PaylevenResponse containing the result, an error code and other additional parameters (check the PaylevenResponse class).
 
 ```csharp
-[TODO]
+try
+{
+    var response = payleven.ValidateResponse(Request);
+    
+    if (response.Result == Results.PaymentSuccessful)
+    {
+        ...
+    }
+    
+    ...
+}
+catch (Exception exc)
+{
+    ...
+}
 ```
