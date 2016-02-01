@@ -1,6 +1,7 @@
 # PaylevenWebAppSharp
 PaylevenWebAppSharp is an implementation of the Payleven web API for the .NET framework.<br />
-Easily integrate your mobile-friendly website with the Payleven mobile pos.
+Easily integrate your mobile-friendly website with the Payleven mobile pos.<br />
+More info about Payleven offer and pos on https://payleven.com/
 
 [![Build status](https://ci.appveyor.com/api/projects/status/a362pwpp7k3onyah?svg=true)](https://ci.appveyor.com/project/petrhaus/paylevenwebappsharp)
 
