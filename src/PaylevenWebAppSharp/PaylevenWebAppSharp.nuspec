@@ -5,12 +5,12 @@
     <version>$version$</version>
     <title>$title$</title>
     <authors>Alessandro Petrelli</authors>
-    <owners>Alessandro Petrelli</owners>
-    <projectUrl>http://github.com/petrhaus/PaylevenWebAppSharp</projectUrl>
+    <owners>AppSpace snc</owners>
+    <projectUrl>http://github.com/AppSpaceIT/PaylevenWebAppSharp</projectUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>a port of the Payleven web API to the .NET framework, which allows your mobile enabled website to interact with the Payleven mobile pos.</description>
+    <description>an implementation of the Payleven web API to the .NET framework, which allows your mobile enabled website to interact with the Payleven mobile pos.</description>
     <releaseNotes>First release.</releaseNotes>
-    <copyright>Copyright 2016</copyright>
+    <copyright>Copyright @ AppSpace snc 2016</copyright>
     <tags>payleven mobile pos</tags>
   </metadata>
 </package>
