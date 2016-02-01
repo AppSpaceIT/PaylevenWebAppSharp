@@ -45,21 +45,74 @@ catch (Exception exc)
 Starts a refund
 
 ```csharp
-[TODO]
+var request = new RefundRequest
+{
+    CallbackUri = new Uri("http://domain.example/payleven/callback"),
+    DisplayName = "MyStore",
+    OrderId = "123456"
+};
+
+var payleven = new PaylevenWebApp("my_token");
+            
+try
+{
+    var url = payleven.GetRefundUrl(request);
+            
+    Response.Redirect(url);
+}
+catch (Exception exc)
+{
+    ...
+}
 ```
 
 #####Transaction details
 Show details about a transaction
 
 ```csharp
-[TODO]
+var request = new DetailsRequest
+{
+    CallbackUri = new Uri("http://domain.example/payleven/callback"),
+    DisplayName = "MyStore",
+    OrderId = "123456"
+};
+
+var payleven = new PaylevenWebApp("my_token");
+            
+try
+{
+    var url = payleven.GetDetailsUrl(request);
+            
+    Response.Redirect(url);
+}
+catch (Exception exc)
+{
+    ...
+}
 ```
 
 #####Payments history
 Opens the payments history
 
 ```csharp
-[TODO]
+var request = new PaymentsHistoryRequest
+{
+    CallbackUri = new Uri("http://domain.example/payleven/callback"),
+    DisplayName = "MyStore"
+};
+
+var payleven = new PaylevenWebApp("my_token");
+            
+try
+{
+    var url = payleven.GetPaymentsHistoryUrl(request);
+            
+    Response.Redirect(url);
+}
+catch (Exception exc)
+{
+    ...
+}
 ```
 
 #### Response
