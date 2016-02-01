@@ -17,7 +17,28 @@ A request returns a url which you redirect to, so Payleven app opens and you can
 Starts a transaction
 
 ```csharp
-[TODO]
+var request = new PaymentRequest
+{
+    CallbackUri = new Uri("http://domain.example/payleven/callback"),
+    DisplayName = "MyStore",
+    Currency = Currencies.EUR,
+    PriceInCents = 1050,
+    Description = "Payment for order on domain.example",
+    OrderId = "123456"
+};
+
+var payleven = new PaylevenWebApp("my_token");
+            
+try
+{
+    var url = payleven.GetPaymentUrl(request);
+            
+    Response.Redirect(url);
+}
+catch (Exception exc)
+{
+    ...
+}
 ```
 
 #####Refund
