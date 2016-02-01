@@ -121,7 +121,7 @@ catch (Exception exc)
 
 #### Response
 Verify a response sent by Payleven to the callback uri, as the result of an operation.
-You just need to pass a reference to the actual HttpRequest: if the request is not valid or tampered an exception will be thrown, otherwise you'll get back a PaylevenResponse containing the result, an error code and other additional parameters (check the PaylevenResponse class).
+You just need to pass a reference to the actual HttpRequest: if the request is invalid or tampered an exception will be thrown, otherwise you'll get back a PaylevenResponse containing the result and an error code, plus a bunch of additional parameters (check the PaylevenResponse class).
 
 ```csharp
 try
