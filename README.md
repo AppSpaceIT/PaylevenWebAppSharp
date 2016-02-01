@@ -10,8 +10,15 @@ Install the nuget package
 
     PM> Install-Package AutoMapper
 
+Get a reference to the PaylevenWebApp class. The constructor takes a string parameter, which is the token you have been provided by Payleven, used to sign requests and verify response signatures.
+
+```csharp
+var payleven = new PaylevenWebApp("my_token");
+```
+
 #### Requests
-A request returns a url which you redirect to, so Payleven app opens and you can do one of the following operations:
+A request returns a url which you redirect to, so Payleven app opens and you can do one of the operations listed below.
+Every request must contain a callback uri where the Payleven app will redirect when done, passing in the result of the operation and other parameters.
 
 #####Payment
 Starts a transaction
@@ -27,8 +34,6 @@ var request = new PaymentRequest
     OrderId = "123456"
 };
 
-var payleven = new PaylevenWebApp("my_token");
-            
 try
 {
     var url = payleven.GetPaymentUrl(request);
@@ -52,8 +57,6 @@ var request = new RefundRequest
     OrderId = "123456"
 };
 
-var payleven = new PaylevenWebApp("my_token");
-            
 try
 {
     var url = payleven.GetRefundUrl(request);
@@ -77,8 +80,6 @@ var request = new DetailsRequest
     OrderId = "123456"
 };
 
-var payleven = new PaylevenWebApp("my_token");
-            
 try
 {
     var url = payleven.GetDetailsUrl(request);
@@ -101,8 +102,6 @@ var request = new PaymentsHistoryRequest
     DisplayName = "MyStore"
 };
 
-var payleven = new PaylevenWebApp("my_token");
-            
 try
 {
     var url = payleven.GetPaymentsHistoryUrl(request);
