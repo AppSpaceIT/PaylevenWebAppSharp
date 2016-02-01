@@ -9,7 +9,7 @@ More info about Payleven offer and pos on https://payleven.com/
 
 Install the nuget package
 
-    PM> Install-Package AutoMapper
+    PM> Install-Package PaylevenWebAppSharp
 
 Get a reference to the PaylevenWebApp class. The constructor takes a string parameter, which is the token you have been provided by Payleven, used to sign requests and verify response signatures.
 
