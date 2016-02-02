@@ -1,6 +1,5 @@
 # PaylevenWebAppSharp
-PaylevenWebAppSharp is an implementation of the Payleven web API for the .NET framework.<br />
-Easily integrate your mobile-friendly website with the Payleven mobile pos.<br />
+PaylevenWebAppSharp is an implementation of the Payleven web API for the .NET framework, which allows you to easily integrate your mobile-friendly website with the Payleven mobile pos.<br />
 More info about Payleven offer and pos on https://payleven.com/
 
 [![Build status](https://ci.appveyor.com/api/projects/status/a362pwpp7k3onyah?svg=true)](https://ci.appveyor.com/project/petrhaus/paylevenwebappsharp)
@@ -11,7 +10,7 @@ Install the nuget package
 
     PM> Install-Package PaylevenWebAppSharp
 
-Get a reference to the PaylevenWebApp class. The constructor takes a string parameter, which is the token you have been provided by Payleven, used to sign requests and verify response signatures.
+Get a reference to the PaylevenWebApp class. The constructor takes a string parameter, which is the token you have been provided by Payleven, used to sign requests and verify response signature.
 
 ```csharp
 using PaylevenWebAppSharp;
