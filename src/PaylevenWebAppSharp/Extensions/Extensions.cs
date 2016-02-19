@@ -11,7 +11,7 @@ namespace PaylevenWebAppSharp.Extensions
         public static UriBuilder AddQuery(this UriBuilder uriBuilder, string name, string value)
         {
             var nvc = HttpUtility.ParseQueryString(uriBuilder.Query);
-            nvc.Add(name, HttpUtility.UrlEncode(value) ?? string.Empty);
+            nvc.Add(name, value ?? string.Empty);
             uriBuilder.Query = nvc.ToString();
 
             return uriBuilder;
