@@ -5,7 +5,6 @@ using NSubstitute;
 using NUnit.Framework;
 using PaylevenWebAppSharp.Enums;
 using PaylevenWebAppSharp.Extensions;
-using DeepEqual;
 using DeepEqual.Syntax;
 
 namespace PaylevenWebAppSharp.Tests
