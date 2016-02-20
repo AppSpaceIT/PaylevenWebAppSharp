@@ -1,0 +1,24 @@
+﻿@using (Html.BeginForm("DoPayment", "Home"))
+{
+    <div class="form-group">
+        <label for="orderId">Order Id</label>
+        <input type="text" class="form-control" id="orderId" name="orderId" placeholder="123456" value="123456"/>
+    </div>
+    <div class="form-group">
+        <label for="description">Description</label>
+        <input type="text" class="form-control" id="description" name="description" placeholder="Apples" value="Apples"/>
+    </div>
+    <div class="form-group">
+        <label for="currency">Currency</label>
+        <select class="form-control" id="currency" name="currency">
+            <option>EUR</option>
+            <option>GBP</option>
+            <option>PLN</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="text" class="form-control" id="price" name="price" placeholder="0,99" value="0,99">
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Checkout</button>
+}

@@ -1,0 +1,12 @@
+﻿@model Dictionary<string, object>
+<table class="table table-striped table-condensed">
+    <tbody>
+    @foreach (var s in Model.Keys)
+    {
+        <tr>
+            <th>@s</th>
+            <td>@Model[s]</td>
+        </tr>
+    }
+    </tbody>
+</table>

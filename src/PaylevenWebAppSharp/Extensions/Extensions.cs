@@ -24,13 +24,13 @@ namespace PaylevenWebAppSharp.Extensions
             var hashString = new HMACSHA256(key);
 
             var hashValue = hashString.ComputeHash(message);
-            return hashValue.Aggregate("", (current, x) => current + string.Format((string) "{0:x2}", (object) x));
+            return hashValue.Aggregate("", (current, x) => current + $"{x:x2}");
         }
 
         public static UriBuilder ComputeAndAppendSha256ToUri(this UriBuilder uriBuilder, string token)
         {
             uriBuilder.Path += uriBuilder.Query
-                .Remove(0, 1) // remove the ? from the query part
+                .TrimStart('?')
                 .ToSha256(token);
 
             return uriBuilder;

@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaylevenWebAppSharp", "Payl
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaylevenWebAppSharp.Tests", "PaylevenWebAppSharp.Tests\PaylevenWebAppSharp.Tests.csproj", "{82FD0671-AA33-4FBA-BB03-2E9D151710A2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PaylevenWebAppSharpDemo", "PaylevenWebAppSharpDemo\PaylevenWebAppSharpDemo.csproj", "{75F1C156-4878-408F-8EF7-5FFFF9D9C129}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{82FD0671-AA33-4FBA-BB03-2E9D151710A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{82FD0671-AA33-4FBA-BB03-2E9D151710A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{82FD0671-AA33-4FBA-BB03-2E9D151710A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75F1C156-4878-408F-8EF7-5FFFF9D9C129}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75F1C156-4878-408F-8EF7-5FFFF9D9C129}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75F1C156-4878-408F-8EF7-5FFFF9D9C129}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75F1C156-4878-408F-8EF7-5FFFF9D9C129}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,5 +1,4 @@
-﻿using System;
-using PaylevenWebAppSharp.Enums;
+﻿using PaylevenWebAppSharp.Enums;
 
 namespace PaylevenWebAppSharp
 {

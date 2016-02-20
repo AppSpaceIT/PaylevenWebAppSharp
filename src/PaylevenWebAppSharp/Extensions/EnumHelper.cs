@@ -1,7 +1,5 @@
 ﻿using System;
 using System.ComponentModel;
-using System.Linq;
-using System.Reflection;
 
 namespace PaylevenWebAppSharp.Extensions
 {
@@ -45,17 +43,12 @@ namespace PaylevenWebAppSharp.Extensions
                 return default(T);
             }
 
-            throw new ArgumentException("Not found.", "description");
+            throw new ArgumentException("Not found.", nameof(description));
         }
 
         public static T GetValueFromDescription(string description)
         {
             return GetValueFromDescription(description, false);
-        }
-
-        public static T GetValueFromDescriptionOrDefault(string description)
-        {
-            return GetValueFromDescription(description, true);
         }
     }
 }

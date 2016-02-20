@@ -18,10 +18,10 @@ namespace PaylevenWebAppSharp
 
         private static UriBuilder BuildBaseUrl(string operation, BaseRequest baseRequest)
         {
-            return new UriBuilder(string.Format("{0}/{1}/{2}/", Consts.BaseUrl, operation, Consts.Version))
+            return new UriBuilder($"{Consts.BaseUrl}/{operation}/{Consts.Version}/")
                 .AddQuery("domain", baseRequest.CallbackUri.Host)
                 .AddQuery("scheme", baseRequest.CallbackUri.Scheme)
-                .AddQuery("callback", baseRequest.CallbackUri.PathAndQuery)
+                .AddQuery("callback", baseRequest.CallbackUri.PathAndQuery.TrimStart('/'))
                 .AddQuery("appName", baseRequest.DisplayName);
         }
 
@@ -29,17 +29,17 @@ namespace PaylevenWebAppSharp
         {
             if (request == null)
             {
-                throw new ArgumentException("request");
+                throw new ArgumentException(nameof(request));
             }
 
             if (request.CallbackUri == null)
             {
-                throw new ArgumentNullException("CallbackUri", "cannot be null.");
+                throw new ArgumentNullException(nameof(request.CallbackUri), $"{nameof(request.CallbackUri)} cannot be null.");
             }
 
             if (string.IsNullOrEmpty(request.DisplayName))
             {
-                throw new ArgumentNullException("DisplayName", "cannot be empty.");
+                throw new ArgumentNullException(nameof(request.DisplayName), $"{nameof(request.DisplayName)} cannot be empty.");
             }
         }
 
@@ -49,7 +49,7 @@ namespace PaylevenWebAppSharp
 
             if (string.IsNullOrEmpty(request.OrderId))
             {
-                throw new ArgumentNullException("OrderId", "cannot be empty.");
+                throw new ArgumentNullException(nameof(request.OrderId), $"{nameof(request.OrderId)} cannot be empty.");
             }
         }
 
@@ -59,13 +59,13 @@ namespace PaylevenWebAppSharp
 
             if (request.PriceInCents <= 0)
             {
-                throw new ArgumentOutOfRangeException("PriceInCents", request.PriceInCents,
-                    "cannot be less than or equal to 0.");
+                throw new ArgumentOutOfRangeException(nameof(request.PriceInCents), request.PriceInCents,
+                    $"{nameof(request.PriceInCents)} cannot be less than or equal to 0.");
             }
 
             var builder = BuildBaseUrl("payment", request)
                 .AddQuery("price", request.PriceInCents.ToString())
-                .AddQuery("currency", Enum.GetName(typeof (Currencies), request.Currency))
+                .AddQuery("currency", Enum.GetName(typeof(Currencies), request.Currency))
                 .AddQuery("description", request.Description)
                 .AddQuery("orderId", request.OrderId);
 
@@ -104,15 +104,16 @@ namespace PaylevenWebAppSharp
         public PaylevenResponse ValidateResponse(HttpRequestBase httpRequest)
         {
             var result = httpRequest.QueryString["result"];
+            var timestamp = httpRequest.QueryString["timestamp"];
 
             if (string.IsNullOrWhiteSpace(result))
             {
-                throw new ArgumentNullException("result", "cannot be empty.");
+                throw new ArgumentNullException(nameof(result), $"{nameof(result)} cannot be empty.");
             }
 
             if (string.IsNullOrWhiteSpace(httpRequest["timestamp"]))
             {
-                throw new ArgumentNullException("timestamp", "cannot be empty.");
+                throw new ArgumentNullException(nameof(timestamp), $"{nameof(timestamp)} timestamp cannot be empty.");
             }
 
             var builder = new UriBuilder("localhost");
