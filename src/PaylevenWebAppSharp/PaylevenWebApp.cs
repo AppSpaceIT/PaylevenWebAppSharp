@@ -119,7 +119,7 @@ namespace PaylevenWebAppSharp
             var builder = new UriBuilder("localhost");
             foreach (var value in Consts.HashableResponseKeys)
             {
-                builder.AddQuery(value, httpRequest[value].GetValueOrEmpty());
+                builder.AddQuery(value, httpRequest.QueryString[value].GetValueOrEmpty());
             }
 
             var token = result == Results.LoginCanceled.GetDescription()
@@ -127,10 +127,10 @@ namespace PaylevenWebAppSharp
                 : _token;
 
             var hmac = builder.Query
-                .Remove(0, 1)
+                .TrimStart('?')
                 .ToSha256(token);
 
-            if (hmac != httpRequest["hmac"])
+            if (hmac != httpRequest.QueryString["hmac"])
             {
                 throw new Exception("Invalid hmac");
             }
@@ -138,12 +138,12 @@ namespace PaylevenWebAppSharp
             var response = new PaylevenResponse
             {
                 Result = EnumHelper<Results>.GetValueFromDescription(result),
-                ErrorCode = string.IsNullOrWhiteSpace(httpRequest["errorCode"])
+                ErrorCode = string.IsNullOrWhiteSpace(httpRequest.QueryString["errorCode"])
                     ? ErrorCodes.NoError
-                    : EnumHelper<ErrorCodes>.ParseEnum(httpRequest["errorCode"]),
-                Currency = string.IsNullOrWhiteSpace(httpRequest["currency"])
+                    : EnumHelper<ErrorCodes>.ParseEnum(httpRequest.QueryString["errorCode"]),
+                Currency = string.IsNullOrWhiteSpace(httpRequest.QueryString["currency"])
                     ? (Currencies?)null
-                    : EnumHelper<Currencies>.ParseEnum(httpRequest["currency"]),
+                    : EnumHelper<Currencies>.ParseEnum(httpRequest.QueryString["currency"]),
             };
 
             var type = typeof (PaylevenResponse);
@@ -154,10 +154,10 @@ namespace PaylevenWebAppSharp
                     .GetCustomAttributes(typeof (DescriptionAttribute), true)
                     .FirstOrDefault() as DescriptionAttribute;
 
-                if (attribute != null && !string.IsNullOrWhiteSpace(httpRequest[attribute.Description]))
+                if (attribute != null && !string.IsNullOrWhiteSpace(httpRequest.QueryString[attribute.Description]))
                 {
                     property.SetValue(response,
-                        Convert.ChangeType(httpRequest[attribute.Description], property.PropertyType));
+                        Convert.ChangeType(httpRequest.QueryString[attribute.Description], property.PropertyType));
                 }
             }
 

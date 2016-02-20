@@ -174,7 +174,7 @@ namespace PaylevenWebAppSharp.Tests
                 { "fake_param", "fake_value" }
             };
 
-            _httpRequest[Arg.Any<string>()].ReturnsForAnyArgs(x => responseParameters[x.Arg<string>()]);
+            _httpRequest.QueryString.Returns(responseParameters);
 
             Assert.Throws<ArgumentNullException>(() => _sut.ValidateResponse(_httpRequest));
         }
@@ -188,7 +188,7 @@ namespace PaylevenWebAppSharp.Tests
                 { "timestamp", Timestamp }
             };
 
-            _httpRequest[Arg.Any<string>()].ReturnsForAnyArgs(x => responseParameters[x.Arg<string>()]);
+            _httpRequest.QueryString.Returns(responseParameters);
 
             Assert.Throws<Exception>(() => _sut.ValidateResponse(_httpRequest));
         }
@@ -198,7 +198,7 @@ namespace PaylevenWebAppSharp.Tests
         {
             var responseParameters = new NameValueCollection
             {
-                {"result", "payment_success"},
+                { "result", "payment_success" },
                 { "description", "fake_description"},
                 { "orderId", "fake_order_id" },
                 { "errorCode", "100" },
@@ -235,12 +235,11 @@ namespace PaylevenWebAppSharp.Tests
             }
 
             var hmac = builder.Query
-                .Remove(0, 1)
+                .TrimStart('?')
                 .ToSha256(Token);
 
             responseParameters.Add("hmac", hmac);
 
-            _httpRequest[Arg.Any<string>()].ReturnsForAnyArgs(x => responseParameters[x.Arg<string>()]);
             _httpRequest.QueryString.Returns(responseParameters);
 
             var expected = new PaylevenResponse
