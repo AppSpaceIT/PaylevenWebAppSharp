@@ -4,6 +4,10 @@ More info about Payleven offer and pos on https://payleven.com/
 
 [![Build status](https://ci.appveyor.com/api/projects/status/a362pwpp7k3onyah?svg=true)](https://ci.appveyor.com/project/petrhaus/paylevenwebappsharp)
 
+### Demo
+
+Afeter you have installed the Payleven app in a iOS or Android device, just point your mobile browser to http://appspace.cloud/paylevenwebapp to test all the functionalities.
+
 ### How do I get started?
 
 Install the nuget package
