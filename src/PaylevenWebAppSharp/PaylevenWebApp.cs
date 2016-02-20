@@ -111,9 +111,9 @@ namespace PaylevenWebAppSharp
                 throw new ArgumentNullException(nameof(result), $"{nameof(result)} cannot be empty.");
             }
 
-            if (string.IsNullOrWhiteSpace(httpRequest["timestamp"]))
+            if (string.IsNullOrWhiteSpace(timestamp))
             {
-                throw new ArgumentNullException(nameof(timestamp), $"{nameof(timestamp)} timestamp cannot be empty.");
+                throw new ArgumentNullException(nameof(timestamp), $"{nameof(timestamp)} cannot be empty.");
             }
 
             var builder = new UriBuilder("localhost");
