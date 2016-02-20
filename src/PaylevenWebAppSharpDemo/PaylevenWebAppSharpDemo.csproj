@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <ExcludeGeneratedDebugSymbol>true</ExcludeGeneratedDebugSymbol>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -157,6 +158,7 @@
     <Content Include="Views\Home\TransactionDetails.cshtml" />
     <Content Include="Views\Response\Index.cshtml" />
     <None Include="Properties\PublishProfiles\Disk.pubxml" />
+    <None Include="Properties\PublishProfiles\Web Deploy.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\PaylevenWebAppSharp\PaylevenWebAppSharp.csproj">

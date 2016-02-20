@@ -62,7 +62,7 @@ namespace PaylevenWebAppSharpDemo.Controllers
                 DisplayName = _displayName,
                 OrderId = orderId,
                 Description = description,
-               // PriceInCents = (int)(price.Value * 100),
+                PriceInCents = (int)(price.Value * 100),
                 Currency = currency.Value,
                 CallbackUri = CallBackUri
             });
