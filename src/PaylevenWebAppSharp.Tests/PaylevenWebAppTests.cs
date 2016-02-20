@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Specialized;
+using System.Text;
 using System.Web;
 using NSubstitute;
 using NUnit.Framework;
@@ -205,7 +206,7 @@ namespace PaylevenWebAppSharp.Tests
                 { "amount", "10" },
                 { "tipAmount", "5" },
                 { "currency", "eur" },
-                { "is_duplicate_receipt", "true" },
+                { "is_duplicate_receipt", "yes" },
                 { "payment_method", "fake_payment_method" },
                 { "expire_month", "01" },
                 { "expire_year", "16" },
@@ -228,14 +229,13 @@ namespace PaylevenWebAppSharp.Tests
                 { "timestamp", Timestamp }
             };
         
-            var builder = new UriBuilder("localhost");
+            var builder = new StringBuilder();
             foreach (var key in Consts.HashableResponseKeys)
             {
-                builder.AddQuery(key, responseParameters[key].GetValueOrEmpty());
+                builder.Append(responseParameters[key]);
             }
 
-            var hmac = builder.Query
-                .TrimStart('?')
+            var hmac = builder.ToString()
                 .ToSha256(Token);
 
             responseParameters.Add("hmac", hmac);
@@ -252,7 +252,7 @@ namespace PaylevenWebAppSharp.Tests
                 Amount = 10,
                 TipAmount = 5,
                 Currency = Currencies.EUR,
-                IsDuplicateReceipt = true,
+                IsDuplicateReceipt = "yes",
                 PaymentMethod = "fake_payment_method",
                 ExpireMonth = 1,
                 ExpireYear = 16,

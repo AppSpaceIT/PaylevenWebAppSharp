@@ -17,10 +17,10 @@ namespace PaylevenWebAppSharp.Extensions
             return uriBuilder;
         }
 
-        public static string ToSha256(this string secret, string data)
+        public static string ToSha256(this string data, string secret)
         {
-            var key = Encoding.ASCII.GetBytes(secret);
-            var message = Encoding.ASCII.GetBytes(data);
+            var key = Encoding.UTF8.GetBytes(secret);
+            var message = Encoding.UTF8.GetBytes(data);
             var hashString = new HMACSHA256(key);
 
             var hashValue = hashString.ComputeHash(message);

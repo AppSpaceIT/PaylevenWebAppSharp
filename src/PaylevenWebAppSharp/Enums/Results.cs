@@ -12,6 +12,7 @@ namespace PaylevenWebAppSharp.Enums
         [Description("refund_canceled")] RefundCanceled,
         [Description("transaction_not_found")] TransactionNotFound,
         [Description("sales_history_cancel")] SalesHistoryCanceled,
-        [Description("login_canceled")] LoginCanceled
+        [Description("login_canceled")] LoginCanceled,
+        [Description("trxdetail_canceled")] TransactionDetailsCanceled
     }
 }

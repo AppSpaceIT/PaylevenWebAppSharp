@@ -20,13 +20,16 @@ namespace PaylevenWebAppSharpDemo.Controllers
                     .GetProperties()
                     .ToDictionary(property => property.Name, property => property.GetValue(response));
 
+                properties.Add("Query", Request.QueryString);
+
                 return View(properties);
             }
             catch (Exception ex)
             {
                 return View(new Dictionary<string, object>
                 {
-                    {"Exception", ex.Message}
+                    { "Exception", ex.Message },
+                    { "Query", Request.QueryString }
                 });
             }
         }

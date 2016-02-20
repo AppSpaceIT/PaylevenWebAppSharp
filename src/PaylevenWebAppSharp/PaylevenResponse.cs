@@ -18,7 +18,7 @@ namespace PaylevenWebAppSharp
         public int TipAmount { get; set; }
         public Currencies? Currency { get; set; }
         [Description("is_duplicate_receipt")]
-        public bool IsDuplicateReceipt { get; set; }
+        public string IsDuplicateReceipt { get; set; }
         [Description("payment_method")]
         public string PaymentMethod { get; set; }
         [Description("effective_month")]

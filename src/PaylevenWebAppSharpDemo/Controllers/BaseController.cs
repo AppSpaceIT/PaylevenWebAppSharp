@@ -15,6 +15,11 @@ namespace PaylevenWebAppSharpDemo.Controllers
             var token = ConfigurationManager.AppSettings[PaylevenToken] ??
                         Environment.GetEnvironmentVariable(PaylevenToken, EnvironmentVariableTarget.Machine);
 
+            if (string.IsNullOrEmpty(token))
+            {
+                throw new ArgumentNullException(nameof(token));
+            }
+
             PaylevenWebApp = new PaylevenWebApp(token);
         }
     }

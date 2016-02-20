@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Linq;
+using System.Text;
 using System.Web;
 using PaylevenWebAppSharp.Enums;
 using PaylevenWebAppSharp.Extensions;
@@ -116,18 +117,17 @@ namespace PaylevenWebAppSharp
                 throw new ArgumentNullException(nameof(timestamp), $"{nameof(timestamp)} cannot be empty.");
             }
 
-            var builder = new UriBuilder("localhost");
+            var builder = new StringBuilder();
             foreach (var value in Consts.HashableResponseKeys)
             {
-                builder.AddQuery(value, httpRequest.QueryString[value].GetValueOrEmpty());
+                builder.Append(httpRequest.QueryString[value]);
             }
 
             var token = result == Results.LoginCanceled.GetDescription()
                 ? Consts.DefaultToken
                 : _token;
 
-            var hmac = builder.Query
-                .TrimStart('?')
+            var hmac = builder.ToString()
                 .ToSha256(token);
 
             if (hmac != httpRequest.QueryString["hmac"])
@@ -146,19 +146,29 @@ namespace PaylevenWebAppSharp
                     : EnumHelper<Currencies>.ParseEnum(httpRequest.QueryString["currency"]),
             };
 
-            var type = typeof (PaylevenResponse);
+            var type = typeof(PaylevenResponse);
 
             foreach (var property in type.GetProperties())
             {
                 var attribute = property
-                    .GetCustomAttributes(typeof (DescriptionAttribute), true)
+                    .GetCustomAttributes(typeof(DescriptionAttribute), true)
                     .FirstOrDefault() as DescriptionAttribute;
 
-                if (attribute != null && !string.IsNullOrWhiteSpace(httpRequest.QueryString[attribute.Description]))
+                if (attribute == null)
                 {
-                    property.SetValue(response,
-                        Convert.ChangeType(httpRequest.QueryString[attribute.Description], property.PropertyType));
+                    continue;
                 }
+
+                var value = httpRequest.QueryString[attribute.Description];
+
+                if (string.IsNullOrWhiteSpace(value))
+                {
+                    continue;
+                }
+
+                var t = Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType;
+
+                property.SetValue(response, Convert.ChangeType(value, t), null);
             }
 
             return response;

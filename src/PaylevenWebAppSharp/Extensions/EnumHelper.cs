@@ -43,7 +43,7 @@ namespace PaylevenWebAppSharp.Extensions
                 return default(T);
             }
 
-            throw new ArgumentException("Not found.", nameof(description));
+            throw new ArgumentException("Not found.", description);
         }
 
         public static T GetValueFromDescription(string description)
