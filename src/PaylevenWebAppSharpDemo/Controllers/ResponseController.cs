@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 using PaylevenWebAppSharp;
@@ -9,15 +10,25 @@ namespace PaylevenWebAppSharpDemo.Controllers
     {
         public ActionResult Index()
         {
-            var response = PaylevenWebApp.ValidateResponse(Request);
+            try
+            {
+                var response = PaylevenWebApp.ValidateResponse(Request);
 
-            var type = typeof(PaylevenResponse);
+                var type = typeof(PaylevenResponse);
 
-            var properties = type
-                .GetProperties()
-                .ToDictionary(property => property.Name, property => property.GetValue(response));
+                var properties = type
+                    .GetProperties()
+                    .ToDictionary(property => property.Name, property => property.GetValue(response));
 
-            return View(properties);
+                return View(properties);
+            }
+            catch (Exception ex)
+            {
+                return View(new Dictionary<string, object>
+                {
+                    {"Exception", ex.Message}
+                });
+            }
         }
     }
 }
