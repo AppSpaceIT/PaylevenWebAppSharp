@@ -22,13 +22,13 @@ namespace PaylevenWebAppSharp
         [Description("payment_method")]
         public string PaymentMethod { get; set; }
         [Description("effective_month")]
-        public short EffectiveMonth { get; set; }
+        public string EffectiveMonth { get; set; }
         [Description("effective_year")]
-        public short EffectiveYear { get; set; }
+        public string EffectiveYear { get; set; }
         [Description("expire_month")]
-        public short ExpireMonth { get; set; }
+        public string ExpireMonth { get; set; }
         [Description("expire_year")]
-        public short ExpireYear { get; set; }
+        public string ExpireYear { get; set; }
         [Description("aid")]
         public string Aid { get; set; }
         [Description("application_label")]
