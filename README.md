@@ -25,7 +25,7 @@ var payleven = new PaylevenWebApp("my_token");
 ```
 
 #### Requests
-A request returns a url which you redirect to, so Payleven app opens and you can do one of the operations listed below.
+A request returns a url which you redirect to, so that the Payleven app opens and you can do one of the operations listed below.
 Every request must contain a callback uri where the Payleven app will redirect when done, passing in the result of the operation and other parameters.
 
 #####Payment
