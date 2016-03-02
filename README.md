@@ -6,7 +6,7 @@ More info about Payleven offer and pos on https://payleven.com/
 
 ### Demo
 
-Afeter you have installed the Payleven app in a iOS or Android device, just point your mobile browser to http://appspace.cloud/paylevenwebapp to test all the functionalities.
+After you have installed the Payleven app in a iOS or Android device, just point your mobile browser to http://appspace.cloud/paylevenwebapp to test all the functionalities.
 
 ### How do I get started?
 
