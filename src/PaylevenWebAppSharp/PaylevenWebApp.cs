@@ -173,9 +173,9 @@ namespace PaylevenWebAppSharp
                     if (value.All(char.IsDigit))
                     {
                         property.SetValue(response, long.Parse(value).ToDateTime());
-                    }
 
-                    continue;
+                        continue;
+                    }
                 }
 
                 property.SetValue(response, Convert.ChangeType(value, t), null);
