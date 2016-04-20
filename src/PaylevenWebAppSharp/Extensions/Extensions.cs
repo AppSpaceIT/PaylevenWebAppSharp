@@ -42,5 +42,13 @@ namespace PaylevenWebAppSharp.Extensions
                 ? string.Empty
                 : value;
         }
+
+        public static DateTime ToDateTime(this long value)
+        {
+            var dateTime = new DateTimeOffset(new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc));
+            dateTime = dateTime.AddMilliseconds(value);
+
+            return dateTime.UtcDateTime;
+        }
     }
 }

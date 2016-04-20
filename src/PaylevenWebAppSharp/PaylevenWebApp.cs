@@ -161,12 +161,22 @@ namespace PaylevenWebAppSharp
 
                 var value = httpRequest.QueryString[attribute.Description];
 
-                if (string.IsNullOrWhiteSpace(value))
+                if (string.IsNullOrWhiteSpace(value) || value == "null")
                 {
                     continue;
                 }
 
                 var t = Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType;
+
+                if (attribute.Description == "timestamp")
+                {
+                    if (value.All(char.IsDigit))
+                    {
+                        property.SetValue(response, long.Parse(value).ToDateTime());
+                    }
+
+                    continue;
+                }
 
                 property.SetValue(response, Convert.ChangeType(value, t), null);
             }
