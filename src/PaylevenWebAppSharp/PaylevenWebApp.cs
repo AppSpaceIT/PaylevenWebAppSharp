@@ -138,10 +138,10 @@ namespace PaylevenWebAppSharp
             var response = new PaylevenResponse
             {
                 Result = EnumHelper<Results>.GetValueFromDescription(result),
-                ErrorCode = string.IsNullOrWhiteSpace(httpRequest.QueryString["errorCode"])
+                ErrorCode = httpRequest.QueryString["errorCode"].IsEmpty()
                     ? ErrorCodes.NoError
                     : EnumHelper<ErrorCodes>.ParseEnum(httpRequest.QueryString["errorCode"]),
-                Currency = string.IsNullOrWhiteSpace(httpRequest.QueryString["currency"])
+                Currency = httpRequest.QueryString["currency"].IsEmpty()
                     ? (Currencies?)null
                     : EnumHelper<Currencies>.ParseEnum(httpRequest.QueryString["currency"]),
             };
@@ -161,7 +161,7 @@ namespace PaylevenWebAppSharp
 
                 var value = httpRequest.QueryString[attribute.Description];
 
-                if (string.IsNullOrWhiteSpace(value) || value == "null")
+                if (value.IsEmpty())
                 {
                     continue;
                 }
