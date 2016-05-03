@@ -168,14 +168,11 @@ namespace PaylevenWebAppSharp
 
                 var t = Nullable.GetUnderlyingType(property.PropertyType) ?? property.PropertyType;
 
-                if (attribute.Description == "timestamp")
+                if (attribute.Description == "timestamp" && value.All(char.IsDigit))
                 {
-                    if (value.All(char.IsDigit))
-                    {
-                        property.SetValue(response, long.Parse(value).ToDateTime());
+                    property.SetValue(response, long.Parse(value).ToDateTime());
 
-                        continue;
-                    }
+                    continue;
                 }
 
                 property.SetValue(response, Convert.ChangeType(value, t), null);
